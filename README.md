@@ -1,2 +1,2 @@
 Hello dear!
-use this app :)
+use this app for fastest proxies:)
