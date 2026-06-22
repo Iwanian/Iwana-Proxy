@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Iwana Proxy</string>
+    <string name="disclaimer">Все прокси созданы третьими лицами, мы их только собираем ✅</string>
+    <string name="telegram_follow">Пожалуйста, подписывайтесь на нас в Telegram 🙏\n@I_w_a_n_a</string>
+    <string name="telegram_not_installed">Telegram не установлен.</string>
+    <string name="scan_proxies">Сканировать прокси</string>
+    <string name="online_status">Онлайн</string>
+    <string name="ping_label">Пинг: %1$d мс</string>
+    <string name="no_proxies_found">Рабочие прокси не найдены.</string>
+    <string name="connect">Подключить</string>
+    <string name="copy">Копировать</string>
+    <string name="copied">Скопировано в буфер обмена!</string>
+    <string name="share">Поделиться</string>
+    <string name="favorites">Избранное</string>
+    <string name="all_proxies">Все</string>
+    <string name="search_placeholder">Поиск сервера или порта...</string>
+    <string name="auto_scan">Автосканирование (60с)</string>
+    <string name="settings">Настройки</string>
+    <string name="language">Язык</string>
+    <string name="first_launch_title">Выберите язык</string>
+    <string name="select_lang_desc">Выберите предпочитаемый язык</string>
+</resources>

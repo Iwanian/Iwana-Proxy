@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Iwana Proxy</string>
+    <string name="disclaimer">All proxies are created by third parties and we only collect them ✅</string>
+    <string name="telegram_follow">Please follow us on Telegram 🙏\n@I_w_a_n_a</string>
+    <string name="telegram_not_installed">Telegram is not installed.</string>
+    <string name="scan_proxies">Scan Proxies</string>
+    <string name="online_status">Online</string>
+    <string name="ping_label">Ping: %1$d ms</string>
+    <string name="no_proxies_found">No working proxies found.</string>
+    <string name="connect">Connect</string>
+    <string name="copy">Copy</string>
+    <string name="copied">Copied to clipboard!</string>
+    <string name="share">Share</string>
+    <string name="favorites">Favorites</string>
+    <string name="all_proxies">All</string>
+    <string name="search_placeholder">Search server or port...</string>
+    <string name="auto_scan">Auto Scan (60s)</string>
+    <string name="settings">Settings</string>
+    <string name="language">Language</string>
+    <string name="theme_setting">Appearance</string>
+    <string name="theme_system">System Default</string>
+    <string name="theme_light">Light Mode</string>
+    <string name="theme_dark">Dark Mode</string>
+    <string name="first_launch_title">Choose Language</string>
+    <string name="select_lang_desc">Select your preferred language</string>
+</resources>

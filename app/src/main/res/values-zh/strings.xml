@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Iwana Proxy</string>
+    <string name="disclaimer">所有代理均由第三方创建，我们仅进行收集 ✅</string>
+    <string name="telegram_follow">请在 Telegram 上关注我们 🙏\n@I_w_a_n_a</string>
+    <string name="telegram_not_installed">未安装 Telegram。</string>
+    <string name="scan_proxies">扫描代理</string>
+    <string name="online_status">在线</string>
+    <string name="ping_label">延迟: %1$d 毫秒</string>
+    <string name="no_proxies_found">未找到可用的代理。</string>
+    <string name="connect">连接</string>
+    <string name="copy">复制</string>
+    <string name="copied">已复制到剪贴板！</string>
+    <string name="share">分享</string>
+    <string name="favorites">收藏</string>
+    <string name="all_proxies">全部</string>
+    <string name="search_placeholder">搜索服务器或端口...</string>
+    <string name="auto_scan">自动扫描 (60秒)</string>
+    <string name="settings">设置</string>
+    <string name="language">语言</string>
+    <string name="first_launch_title">选择语言</string>
+    <string name="select_lang_desc">请选择您的首选语言</string>
+</resources>
