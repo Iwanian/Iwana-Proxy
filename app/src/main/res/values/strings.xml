@@ -14,7 +14,7 @@
     <string name="favorites">Favorites</string>
     <string name="all_proxies">All</string>
     <string name="search_placeholder">Search server or port...</string>
-    <string name="auto_scan">Auto Scan (60s)</string>
+    <string name="auto_scan">Auto Scan (15s)</string>
     <string name="settings">Settings</string>
     <string name="language">Language</string>
     <string name="theme_setting">Appearance</string>

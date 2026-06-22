@@ -14,7 +14,7 @@
     <string name="favorites">पसंदीदा</string>
     <string name="all_proxies">सभी</string>
     <string name="search_placeholder">सर्वर या पोर्ट खोजें...</string>
-    <string name="auto_scan">ऑटो स्कैन (60 सेकंड)</string>
+    <string name="auto_scan">ऑटो स्कैन (15 सेकंड)</string>
     <string name="settings">सेटिंग्स</string>
     <string name="language">भाषा</string>
     <string name="first_launch_title">भाषा चुनें</string>

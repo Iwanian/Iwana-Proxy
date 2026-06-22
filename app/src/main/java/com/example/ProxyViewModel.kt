@@ -102,7 +102,7 @@ class ProxyViewModel(
         // Fetch and scan on initiation
         fetchAndScanProxies()
 
-        // Observe Auto Scan setting to start/stop the 60s timer loop
+        // Observe Auto Scan setting to start/stop the 15s timer loop
         viewModelScope.launch {
             dataStoreManager.autoScanFlow.collect { enabled ->
                 _autoScan.value = enabled
@@ -198,7 +198,7 @@ class ProxyViewModel(
         autoScanJob?.cancel()
         autoScanJob = viewModelScope.launch {
             while (true) {
-                delay(60000L) // 60 seconds interval
+                delay(15000L) // 15 seconds interval
                 try {
                     val downloaded = repository.fetchProxies()
                     if (downloaded.isNotEmpty()) {

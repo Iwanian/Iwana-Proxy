@@ -14,7 +14,7 @@
     <string name="favorites">收藏</string>
     <string name="all_proxies">全部</string>
     <string name="search_placeholder">搜索服务器或端口...</string>
-    <string name="auto_scan">自动扫描 (60秒)</string>
+    <string name="auto_scan">自动扫描 (15秒)</string>
     <string name="settings">设置</string>
     <string name="language">语言</string>
     <string name="first_launch_title">选择语言</string>

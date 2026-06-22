@@ -14,7 +14,7 @@
     <string name="favorites">علاقه‌مندی‌ها</string>
     <string name="all_proxies">همه</string>
     <string name="search_placeholder">جستجوی سرور یا پورت...</string>
-    <string name="auto_scan">اسکن خودکار (۶۰ ثانیه)</string>
+    <string name="auto_scan">اسکن خودکار (۱۵ ثانیه)</string>
     <string name="settings">تنظیمات</string>
     <string name="language">زبان</string>
     <string name="theme_setting">ظاهر برنامه</string>

@@ -14,7 +14,7 @@
     <string name="favorites">Избранное</string>
     <string name="all_proxies">Все</string>
     <string name="search_placeholder">Поиск сервера или порта...</string>
-    <string name="auto_scan">Автосканирование (60с)</string>
+    <string name="auto_scan">Автосканирование (15с)</string>
     <string name="settings">Настройки</string>
     <string name="language">Язык</string>
     <string name="first_launch_title">Выберите язык</string>

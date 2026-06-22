@@ -1,5 +1,6 @@
 package com.example
 
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -9,7 +10,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -22,8 +25,7 @@ fun LanguageFlag(
     modifier: Modifier = Modifier
 ) {
     if (optionCode == "fa") {
-        // Redraw the historic Lion & Sun Flag perfectly scaled to match standard emoji size.
-        // It features a 3-band layout (Green, White, Red) with the Lion and Sun emblems inside.
+        // Draw the simplified design: 3 equal bands (Green, White, Red) and a golden circle in the center.
         Card(
             modifier = modifier
                 .width(size * 1.5f)
@@ -32,46 +34,36 @@ fun LanguageFlag(
             colors = CardDefaults.cardColors(containerColor = Color.White),
             elevation = CardDefaults.cardElevation(defaultElevation = 1.dp)
         ) {
-            Column(modifier = Modifier.fillMaxSize()) {
-                // Vibrant green band (top)
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .weight(1f)
-                        .background(Color(0xFF009A49))
+            Canvas(modifier = Modifier.fillMaxSize()) {
+                val w = this.size.width
+                val h = this.size.height
+
+                // Green band (نوار سبز) - rgb(0, 153, 0)
+                drawRect(
+                    color = Color(0, 153, 0),
+                    topLeft = Offset(0f, 0f),
+                    size = androidx.compose.ui.geometry.Size(w, h / 3f)
                 )
-                // Middle white band with the Lion and Sun emblem
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .weight(1.1f)
-                        .background(Color.White),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Box(
-                        contentAlignment = Alignment.Center,
-                        modifier = Modifier.size((size.value * 0.55f).dp)
-                    ) {
-                        // Sun peaking behind
-                        Text(
-                            text = "☀️",
-                            fontSize = (size.value * 0.38f).sp,
-                            modifier = Modifier.offset(x = (size.value * 0.08f).dp, y = -(size.value * 0.08f).dp)
-                        )
-                        // Lion standing in front
-                        Text(
-                            text = "🦁",
-                            fontSize = (size.value * 0.35f).sp,
-                            modifier = Modifier.offset(x = -(size.value * 0.06f).dp, y = (size.value * 0.04f).dp)
-                        )
-                    }
-                }
-                // Vibrant red band (bottom)
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .weight(1f)
-                        .background(Color(0xFFDA291C))
+
+                // White band (نوار سفید) - WHITE
+                drawRect(
+                    color = Color.White,
+                    topLeft = Offset(0f, h / 3f),
+                    size = androidx.compose.ui.geometry.Size(w, h / 3f)
+                )
+
+                // Red band (نوار قرمز) - rgb(204, 0, 0)
+                drawRect(
+                    color = Color(204, 0, 0),
+                    topLeft = Offset(0f, 2f * h / 3f),
+                    size = androidx.compose.ui.geometry.Size(w, h / 3f)
+                )
+
+                // Central golden circle (نماد مرکزی ساده - دایره طلایی) - rgb(255, 215, 0) of radius h / 10
+                drawCircle(
+                    color = Color(255, 215, 0),
+                    radius = h / 10f,
+                    center = Offset(w / 2f, h / 2f)
                 )
             }
         }

@@ -106,7 +106,7 @@ fun SettingsScreen(
                         },
                         supportingContent = {
                             Text(
-                                text = "Refresh & crawl proxies every 60 seconds background loop",
+                                text = "Refresh & crawl proxies every 15 seconds background loop",
                                 style = MaterialTheme.typography.labelMedium
                             )
                         },
