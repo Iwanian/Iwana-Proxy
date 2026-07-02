@@ -1,0 +1,280 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:models="using:IwanaProxy.Models"
+        x:Class="IwanaProxy.MainWindow"
+        x:Name="RootWindow"
+        x:DataType="Window"
+        Title="Iwana Proxy" Height="680" Width="420"
+        MinHeight="500" MinWidth="360"
+        Icon="Assets/icon.ico"
+        Background="{DynamicResource BgBrush}"
+        WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+        <!-- Settings / icon button -->
+        <ControlTheme x:Key="IconButton" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Foreground" Value="{DynamicResource TextPrimaryBrush}"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Padding" Value="8,6"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Border Name="Bd" Background="{TemplateBinding Background}"
+                            CornerRadius="{TemplateBinding CornerRadius}" Padding="{TemplateBinding Padding}">
+                        <ContentPresenter Content="{TemplateBinding Content}"
+                                           HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter>
+            <Style Selector="^:pointerover /template/ Border#Bd">
+                <Setter Property="Background" Value="{DynamicResource IconButtonHoverBrush}"/>
+            </Style>
+        </ControlTheme>
+
+        <!-- Primary blue button -->
+        <ControlTheme x:Key="PrimaryButton" TargetType="Button">
+            <Setter Property="Background" Value="{DynamicResource AccentBrush}"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Padding" Value="14,7"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Border Name="Bd" Background="{TemplateBinding Background}"
+                            CornerRadius="{TemplateBinding CornerRadius}" Padding="{TemplateBinding Padding}">
+                        <ContentPresenter Content="{TemplateBinding Content}"
+                                           HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter>
+            <Style Selector="^:pointerover /template/ Border#Bd">
+                <Setter Property="Opacity" Value="0.85"/>
+            </Style>
+        </ControlTheme>
+
+        <!-- Copy / small outline button -->
+        <ControlTheme x:Key="CopyButton" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="{DynamicResource TextSecondaryBrush}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Padding" Value="6,4"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="CornerRadius" Value="6"/>
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Border Name="Bd" Background="{TemplateBinding Background}"
+                            CornerRadius="{TemplateBinding CornerRadius}" Padding="{TemplateBinding Padding}">
+                        <ContentPresenter Content="{TemplateBinding Content}"
+                                           HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter>
+            <Style Selector="^:pointerover /template/ Border#Bd">
+                <Setter Property="Background" Value="{DynamicResource IconButtonHoverBrush}"/>
+            </Style>
+        </ControlTheme>
+
+        <!-- Big scan / refresh bottom button -->
+        <ControlTheme x:Key="ScanButton" TargetType="Button">
+            <Setter Property="Background" Value="{DynamicResource AccentBrush}"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Padding" Value="0,14"/>
+            <Setter Property="CornerRadius" Value="12"/>
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Border Name="Bd" Background="{TemplateBinding Background}"
+                            CornerRadius="{TemplateBinding CornerRadius}" Padding="{TemplateBinding Padding}">
+                        <ContentPresenter Content="{TemplateBinding Content}"
+                                           HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter>
+            <Style Selector="^:pointerover /template/ Border#Bd">
+                <Setter Property="Opacity" Value="0.88"/>
+            </Style>
+        </ControlTheme>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- header -->
+            <RowDefinition Height="Auto"/>
+            <!-- channel banner -->
+            <RowDefinition Height="*"/>
+            <!-- list -->
+            <RowDefinition Height="Auto"/>
+            <!-- scan button -->
+        </Grid.RowDefinitions>
+
+        <!-- ══════════════ HEADER ══════════════ -->
+        <Border Grid.Row="0" Background="{DynamicResource CardBrush}" Padding="16,14,16,14">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Settings gear -->
+                <Button Grid.Column="0" x:Name="SettingsBtn" Content="⚙" Theme="{StaticResource IconButton}"
+                        VerticalAlignment="Center" Click="SettingsButton_Click"/>
+
+                <!-- Title + status (right aligned like screenshot) -->
+                <StackPanel Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center">
+                    <TextBlock x:Name="TitleText" Text="Iwana Proxy"
+                               FontSize="22" FontWeight="Bold"
+                               Foreground="{DynamicResource AccentBrush}"
+                               HorizontalAlignment="Right"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,2,0,0">
+                        <TextBlock x:Name="StatusText" FontSize="11" FontWeight="SemiBold"
+                                   Foreground="{DynamicResource TextSecondaryBrush}"
+                                   VerticalAlignment="Center"/>
+                        <Ellipse Width="8" Height="8" Margin="6,0,0,0" VerticalAlignment="Center"
+                                 Fill="{DynamicResource AliveBrush}"/>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- ══════════════ CHANNEL BANNER ══════════════ -->
+        <Border Grid.Row="1" Background="{DynamicResource Card2Brush}" Padding="16,10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="0" x:Name="ChannelBtn"
+                        Content="I_w_a_n_a@"
+                        Theme="{StaticResource PrimaryButton}"
+                        Click="ChannelButton_Click"
+                        Margin="0,0,12,0"/>
+
+                <TextBlock Grid.Column="1" x:Name="FollowText" FontSize="12"
+                           Foreground="{DynamicResource TextSecondaryBrush}"
+                           HorizontalAlignment="Right" VerticalAlignment="Center">
+                    🙏 Please follow us on Telegram @I_w_a_n_a
+                </TextBlock>
+            </Grid>
+        </Border>
+
+        <!-- ══════════════ PROXY LIST ══════════════ -->
+        <ListBox x:Name="ProxyList" Grid.Row="2"
+                 Background="Transparent" BorderThickness="0"
+                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                 Padding="10,8,10,0">
+            <ListBox.Styles>
+                <Style Selector="ListBoxItem">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Padding" Value="0"/>
+                    <Setter Property="Margin" Value="0,0,0,8"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    <Setter Property="CornerRadius" Value="0"/>
+                </Style>
+                <Style Selector="ListBoxItem:selected /template/ ContentPresenter">
+                    <Setter Property="Background" Value="Transparent"/>
+                </Style>
+                <Style Selector="ListBoxItem:pointerover /template/ ContentPresenter">
+                    <Setter Property="Background" Value="Transparent"/>
+                </Style>
+            </ListBox.Styles>
+
+            <ListBox.ItemTemplate>
+                <DataTemplate x:DataType="models:ProxyItem">
+                    <Border Background="{DynamicResource CardBrush}" CornerRadius="12" Padding="14,12">
+                        <StackPanel>
+                            <!-- Top row: status badge + proxy name + copy -->
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <!-- Proxy number and IP:Port -->
+                                <StackPanel Grid.Column="0" VerticalAlignment="Center">
+                                    <TextBlock FontSize="15" FontWeight="SemiBold"
+                                               Foreground="{DynamicResource TextPrimaryBrush}">
+                                        <Run Text="Proxy #"/><Run Text="{Binding Id}"/>
+                                    </TextBlock>
+                                    <TextBlock Text="{Binding ServerDisplay}"
+                                               FontSize="12" FontFamily="monospace"
+                                               Foreground="{DynamicResource TextSecondaryBrush}"
+                                               Margin="0,3,0,0"/>
+                                </StackPanel>
+
+                                <!-- ONLINE / OFFLINE badge -->
+                                <Border Grid.Column="1" CornerRadius="4" Padding="8,3" Margin="8,0" VerticalAlignment="Center"
+                                        Background="{Binding IsAlive, Converter={StaticResource BoolToBadgeBgConverter}}">
+                                    <TextBlock Text="{Binding StatusDisplay}"
+                                               FontSize="10" FontWeight="Bold"
+                                               Foreground="{Binding IsAlive, Converter={StaticResource BoolToBadgeFgConverter}}"/>
+                                </Border>
+
+                                <!-- Copy button -->
+                                <Button Grid.Column="2" Content="⧉" Theme="{StaticResource CopyButton}"
+                                        Click="CopyButton_Click" Tag="{Binding}"
+                                        VerticalAlignment="Center" ToolTip.Tip="Copy proxy link"/>
+                            </Grid>
+
+                            <!-- Divider -->
+                            <Border Height="1" Background="{DynamicResource DividerBrush}" Margin="0,10,0,10"/>
+
+                            <!-- Bottom row: latency + connect button -->
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <!-- Latency display like screenshot: ms104 LATENCY -->
+                                <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
+                                    <TextBlock FontSize="10" Foreground="{DynamicResource TextSecondaryBrush}"
+                                               VerticalAlignment="Bottom" Margin="0,0,0,1" Text="ms"/>
+                                    <TextBlock Text="{Binding PingMs}"
+                                               FontSize="22" FontWeight="Bold"
+                                               Foreground="{Binding IsAlive, Converter={StaticResource BoolToPingFgConverter}}"/>
+                                    <TextBlock FontSize="9" FontWeight="SemiBold" VerticalAlignment="Bottom"
+                                               Foreground="{DynamicResource TextSecondaryBrush}"
+                                               Margin="4,0,0,2" Text="LATENCY"/>
+                                </StackPanel>
+
+                                <!-- Connect button -->
+                                <Button Grid.Column="1"
+                                        Theme="{StaticResource PrimaryButton}"
+                                        Click="ConnectButton_Click" Tag="{Binding}"
+                                        MinWidth="90">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="▶  " VerticalAlignment="Center" FontSize="11"/>
+                                        <TextBlock Text="Connect" VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                </Button>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <!-- ══════════════ SCAN BUTTON ══════════════ -->
+        <Border Grid.Row="3" Background="{DynamicResource CardBrush}" Padding="14,12">
+            <Button x:Name="ScanBtn" Theme="{StaticResource ScanButton}"
+                    HorizontalAlignment="Stretch"
+                    Click="RefreshButton_Click">
+                <TextBlock x:Name="ScanBtnText" Text="⚡  SCAN PROXIES" FontSize="15" FontWeight="Bold"/>
+            </Button>
+        </Border>
+    </Grid>
+</Window>

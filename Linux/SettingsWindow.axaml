@@ -1,0 +1,99 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="IwanaProxy.SettingsWindow"
+        Title="Settings" Height="380" Width="360"
+        CanResize="False"
+        WindowStartupLocation="CenterOwner"
+        Background="{DynamicResource BgBrush}"
+        Icon="Assets/icon.ico">
+
+    <Grid Margin="24,20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="18"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="18"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Title -->
+        <TextBlock Grid.Row="0" x:Name="TitleText" Text="Settings"
+                   FontSize="20" FontWeight="Bold"
+                   Foreground="{DynamicResource AccentBrush}"/>
+
+        <!-- Theme toggle -->
+        <StackPanel Grid.Row="2">
+            <TextBlock x:Name="ThemeLabel" Text="Theme"
+                       FontSize="12" FontWeight="SemiBold"
+                       Foreground="{DynamicResource TextSecondaryBrush}"
+                       Margin="0,0,0,8"/>
+            <Border Background="{DynamicResource CardBrush}" CornerRadius="10" Padding="4">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <!-- Dark button -->
+                    <Button Grid.Column="0" x:Name="DarkBtn" Click="DarkBtn_Click"
+                            BorderThickness="0" Background="Transparent" Cursor="Hand"
+                            HorizontalContentAlignment="Stretch" Padding="0">
+                        <Border x:Name="DarkBg" CornerRadius="8" Padding="0,10">
+                            <TextBlock x:Name="DarkBtnText" Text="🌙  Dark"
+                                       HorizontalAlignment="Center"
+                                       FontSize="13" FontWeight="SemiBold"
+                                       Foreground="{DynamicResource TextSecondaryBrush}"/>
+                        </Border>
+                    </Button>
+                    <!-- Light button -->
+                    <Button Grid.Column="1" x:Name="LightBtn" Click="LightBtn_Click"
+                            BorderThickness="0" Background="Transparent" Cursor="Hand"
+                            HorizontalContentAlignment="Stretch" Padding="0">
+                        <Border x:Name="LightBg" CornerRadius="8" Padding="0,10">
+                            <TextBlock x:Name="LightBtnText" Text="☀️  Light"
+                                       HorizontalAlignment="Center"
+                                       FontSize="13" FontWeight="SemiBold"
+                                       Foreground="{DynamicResource TextSecondaryBrush}"/>
+                        </Border>
+                    </Button>
+                </Grid>
+            </Border>
+        </StackPanel>
+
+        <!-- Language -->
+        <StackPanel Grid.Row="4">
+            <TextBlock x:Name="LangLabel" Text="Language"
+                       FontSize="12" FontWeight="SemiBold"
+                       Foreground="{DynamicResource TextSecondaryBrush}"
+                       Margin="0,0,0,8"/>
+            <Border Background="{DynamicResource CardBrush}" CornerRadius="10" Padding="10,8">
+                <StackPanel>
+                    <RadioButton x:Name="LangEn" Content="🇬🇧  English"  GroupName="Lang" Margin="0,5"
+                                 Cursor="Hand" Foreground="{DynamicResource TextPrimaryBrush}" Click="Lang_Click"/>
+                    <RadioButton x:Name="LangFa" Content="🇮🇷  فارسی"    GroupName="Lang" Margin="0,5"
+                                 Cursor="Hand" Foreground="{DynamicResource TextPrimaryBrush}" Click="Lang_Click"/>
+                    <RadioButton x:Name="LangRu" Content="🇷🇺  Русский"  GroupName="Lang" Margin="0,5"
+                                 Cursor="Hand" Foreground="{DynamicResource TextPrimaryBrush}" Click="Lang_Click"/>
+                    <RadioButton x:Name="LangZh" Content="🇨🇳  中文"      GroupName="Lang" Margin="0,5"
+                                 Cursor="Hand" Foreground="{DynamicResource TextPrimaryBrush}" Click="Lang_Click"/>
+                    <RadioButton x:Name="LangHi" Content="🇮🇳  हिन्दी"   GroupName="Lang" Margin="0,5"
+                                 Cursor="Hand" Foreground="{DynamicResource TextPrimaryBrush}" Click="Lang_Click"/>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+
+        <!-- Save & close -->
+        <Button Grid.Row="6" x:Name="CloseBtn" Click="CloseBtn_Click"
+                Cursor="Hand" FontWeight="Bold" FontSize="14"
+                Foreground="White" BorderThickness="0"
+                HorizontalContentAlignment="Stretch" Padding="0"
+                Background="Transparent">
+            <Border Background="{DynamicResource AccentBrush}" CornerRadius="10" Padding="0,12">
+                <TextBlock x:Name="CloseBtnText" Text="Save"
+                           HorizontalAlignment="Center"
+                           Foreground="White" FontWeight="Bold" FontSize="14"/>
+            </Border>
+        </Button>
+    </Grid>
+</Window>

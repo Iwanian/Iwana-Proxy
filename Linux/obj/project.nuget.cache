@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "dgSpecHash": "0cfbBECYL5g=",
+  "success": false,
+  "projectFilePath": "C:\\Users\\NOOR\\Desktop\\IwanaProxyLinux\\IwanaProxy\\IwanaProxy.csproj",
+  "expectedPackageFiles": [],
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Error",
+      "message": "Failed to download package 'SkiaSharp.NativeAssets.Linux.2.88.8' from 'https://api.nuget.org/v3-flatcontainer/skiasharp.nativeassets.linux/2.88.8/skiasharp.nativeassets.linux.2.88.8.nupkg'.\r\nReceived an unexpected EOF or 0 bytes from the transport stream."
+    },
+    {
+      "code": "Undefined",
+      "level": "Error",
+      "message": "The feed 'nuget.org [https://api.nuget.org/v3/index.json]' lists package 'SkiaSharp.NativeAssets.Linux.2.88.8' but multiple attempts to download the nupkg have failed. The feed is either invalid or required packages were removed while the current operation was in progress. Verify the package exists on the feed and try again."
+    }
+  ]
+}
