@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Iwana Proxy</string>
+    <string name="disclaimer">सभी प्रॉक्सी तीसरे पक्ष द्वारा बनाए गए हैं और हम केवल उन्हें एकत्र करते हैं ✅</string>
+    <string name="telegram_follow">कृपया टेलीग्राम पर हमें फॉलो करें 🙏\n@I_w_a_n_a</string>
+    <string name="telegram_not_installed">टेलीग्राम इंस्टॉल नहीं है।</string>
+    <string name="scan_proxies">प्रॉक्सी स्कैन करें</string>
+    <string name="online_status">ऑनलाइन</string>
+    <string name="ping_label">पिंग: %1$d एमएस</string>
+    <string name="no_proxies_found">कोई चालू प्रॉक्सी नहीं मिली।</string>
+    <string name="connect">कनेक्ट करें</string>
+    <string name="copy">कॉपी करें</string>
+    <string name="copied">क्लिपबोर्ड पर कॉपी किया गया!</string>
+    <string name="share">शेयर करें</string>
+    <string name="favorites">पसंदीदा</string>
+    <string name="all_proxies">सभी</string>
+    <string name="search_placeholder">सर्वर या पोर्ट खोजें...</string>
+    <string name="auto_scan">ऑटो स्कैन (15 सेकंड)</string>
+    <string name="settings">सेटिंग्स</string>
+    <string name="language">भाषा</string>
+    <string name="first_launch_title">भाषा चुनें</string>
+    <string name="select_lang_desc">अपनी पसंदीदा भाषा चुनें</string>
+</resources>

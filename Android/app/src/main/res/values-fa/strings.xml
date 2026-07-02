@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Iwana Proxy</string>
+    <string name="disclaimer">همه پروکسی‌ها توسط شخص ثالث ساخته شده‌اند و ما فقط آن‌ها را جمع‌آوری می‌کنیم ✅</string>
+    <string name="telegram_follow">لطفا ما را در تلگرام دنبال کنید 🙏\n@I_w_a_n_a</string>
+    <string name="telegram_not_installed">تلگرام نصب نیست.</string>
+    <string name="scan_proxies">اسکن پروکسی‌ها</string>
+    <string name="online_status">آنلاین</string>
+    <string name="ping_label">پینگ: %1$d میلی‌ثانیه</string>
+    <string name="no_proxies_found">هیچ پروکسی فعالی یافت نشد.</string>
+    <string name="connect">اتصال</string>
+    <string name="copy">کپی</string>
+    <string name="copied">در حافظه کپی شد!</string>
+    <string name="share">اشتراک‌گذاری</string>
+    <string name="favorites">علاقه‌مندی‌ها</string>
+    <string name="all_proxies">همه</string>
+    <string name="search_placeholder">جستجوی سرور یا پورت...</string>
+    <string name="auto_scan">اسکن خودکار (۱۵ ثانیه)</string>
+    <string name="settings">تنظیمات</string>
+    <string name="language">زبان</string>
+    <string name="theme_setting">ظاهر برنامه</string>
+    <string name="theme_system">پیش‌فرض سیستم</string>
+    <string name="theme_light">حالت روشن</string>
+    <string name="theme_dark">حالت تاریک</string>
+    <string name="first_launch_title">انتخاب زبان</string>
+    <string name="select_lang_desc">زبان مورد نظر خود را انتخاب کنید</string>
+</resources>
