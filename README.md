@@ -10,7 +10,7 @@
 
 <br>
 
-![Release][(https://img.shields.io/github/v/release/Iwanian/Iwana-Proxy?style=for-the-badge)](https://github.com/Iwanian/Iwana-Proxy/releases/tag/v1.0.0)
+[![Release](https://img.shields.io/github/v/release/Iwanian/Iwana-Proxy?style=for-the-badge)](https://github.com/Iwanian/Iwana-Proxy/releases/tag/v1.0.0)
 ![License](https://img.shields.io/github/license/Iwanian/Iwana-Proxy?style=for-the-badge)
 ![Stars](https://img.shields.io/github/stars/Iwanian/Iwana-Proxy?style=for-the-badge)
 ![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS%20%7C%20Android-blue?style=for-the-badge)
