@@ -1,94 +1,101 @@
-Iwana Proxy
+<div align="center">
 
-<div align="center">  [لوگو]
+<img src="assets/logo.png" width="150">
 
-یک جمع‌آورنده متن‌باز، سریع و چندسکویی برای پروکسی‌ها
+# Iwana Proxy
 
-ویندوز • لینوکس • macOS • اندروید
+**یک جمع‌آورنده متن‌باز، سریع و چندسکویی برای پروکسی‌ها**
 
-[نشان‌ها]
-نسخه | تعداد دانلود | مجوز | ستاره‌ها | پلتفرم‌ها
+🇮🇷 فارسی | [🇺🇸 English](README.md) | [🇷🇺 Русский](README_RU.md) | [🇨🇳 中文](README_ZH.md) | [🇮🇳 हिन्दी](README_HI.md)
 
-</div>  
----
+<br>
 
-✨ ویژگی‌ها
+![Release](https://img.shields.io/github/v/release/Iwanian/Iwana-Proxy?style=for-the-badge)
+![Downloads](https://img.shields.io/github/downloads/Iwanian/Iwana-Proxy/total?style=for-the-badge)
+![License](https://img.shields.io/github/license/Iwanian/Iwana-Proxy?style=for-the-badge)
+![Stars](https://img.shields.io/github/stars/Iwanian/Iwana-Proxy?style=for-the-badge)
+![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS%20%7C%20Android-blue?style=for-the-badge)
 
-رابط کاربری مدرن
+**ویندوز • لینوکس • macOS • اندروید**
 
-پشتیبانی از چندین نوع پروکسی
-
-تست تأخیر (Latency/Ping)
-
-مرتب‌سازی هوشمند
-
-فیلتر بر اساس ریجن
-
-بروزرسانی خودکار
-
-پشتیبانی از چندین سیستم‌عامل
-
-متن‌باز
-
-
+</div>
 
 ---
 
-📷 تصاویر برنامه
+# ✨ ویژگی‌ها
 
+- 🚀 رابط کاربری مدرن
+- 🌍 پشتیبانی از چندین نوع پروکسی
+- 📡 تست تأخیر (Latency / Ping)
+- 📊 مرتب‌سازی هوشمند
+- 🌐 فیلتر بر اساس ریجن
+- 🔄 بروزرسانی خودکار
+- 💻 پشتیبانی از چندین سیستم‌عامل
+- ❤️ متن‌باز
 
 ---
 
-📥 دانلود
+# 📷 تصاویر برنامه
 
-سیستم‌عامل	دانلود
+<div align="center">
 
+### ویندوز
 
+<img src="assets/screenshots/windows.png" width="900">
 
+### لینوکس
+
+<img src="assets/screenshots/linux.png" width="900">
+
+### اندروید
+
+<img src="assets/screenshots/android.png" width="300">
+
+</div>
 
 ---
 
-🚀 شروع سریع
+# 📥 دانلود
 
-1. آخرین نسخه برنامه را دانلود کنید.
+| سیستم‌عامل | دانلود |
+|------------|---------|
+| Windows | [آخرین نسخه](https://github.com/Iwanian/Iwana-Proxy/releases/latest) |
+| Linux | [آخرین نسخه](https://github.com/Iwanian/Iwana-Proxy/releases/latest) |
+| macOS | [آخرین نسخه](https://github.com/Iwanian/Iwana-Proxy/releases/latest) |
+| Android | [آخرین نسخه](https://github.com/Iwanian/Iwana-Proxy/releases/latest) |
 
+---
 
+# 🚀 شروع سریع
+
+1. آخرین نسخه را از بخش **Releases** دانلود کنید.
 2. زبان موردنظر خود را انتخاب کنید.
-
-
 3. پروکسی‌ها را اسکن کنید.
-
-
-4. از طریق تلگرام متصل شوید.
-
-
-
+4. روی پروکسی دلخواه بزنید.
+5. در تلگرام متصل شوید.
 
 ---
 
-🛣 نقشه راه
+# 🛣 نقشه راه
 
-[x] اندروید
-
-[x] ویندوز
-
-[x] لینوکس
-
-[x] macOS
-
-[ ] iOS
-
-
+- [x] Android
+- [x] Windows
+- [x] Linux
+- [x] macOS
+- [ ] iOS
 
 ---
 
-🤝 مشارکت
+# 🤝 مشارکت
 
-از مشارکت شما استقبال می‌کنیم. اگر باگی پیدا کردید یا پیشنهادی دارید، Issue یا Pull Request ثبت کنید.
+از مشارکت شما استقبال می‌کنیم.
 
+اگر باگی پیدا کردید یا پیشنهادی دارید، از طریق تلگرام با ما در ارتباط باشید.
+
+👉 https://t.me/I_w_a_n_a?direct
 
 ---
 
-📄 مجوز
+# 📄 مجوز
 
-این پروژه تحت مجوز MIT منتشر شده است.
+این پروژه تحت مجوز **MIT License** منتشر شده است. برای اطلاعات بیشتر فایل **LICENSE** را مطالعه کنید.
