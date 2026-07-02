@@ -1,12 +1,12 @@
 <div align="center">
-
+  
+فارسی | [🇺🇸 English](README.md) | [🇷🇺 Русский](README_RU.md) | [🇨🇳 中文](README_ZH.md) | [🇮🇳 हिन्दी](README_HI.md)
+  
 <img src="assets/logo.png" width="150">
 
 # Iwana Proxy
 
 **یک جمع‌آورنده متن‌باز، سریع و چندسکویی برای پروکسی‌ها**
-
-🇮🇷 فارسی | [🇺🇸 English](README.md) | [🇷🇺 Русский](README_RU.md) | [🇨🇳 中文](README_ZH.md) | [🇮🇳 हिन्दी](README_HI.md)
 
 <br>
 
@@ -89,4 +89,4 @@
 
 # 📄 مجوز
 
-این پروژه تحت مجوز **MIT License** منتشر شده است. برای اطلاعات بیشتر فایل **LICENSE** را مطالعه کنید.
+این پروژه تحت مجوز **MIT License** منتشر شده است. برای اطلاعات بیشتر فایل **[LICENSE](LICENCE)** را طالعه کنید.
