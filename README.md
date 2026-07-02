@@ -11,7 +11,6 @@
 <br>
 
 ![Release](https://img.shields.io/github/v/release/Iwanian/Iwana-Proxy?style=for-the-badge)
-![Downloads](https://img.shields.io/github/downloads/Iwanian/Iwana-Proxy/total?style=for-the-badge)
 ![License](https://img.shields.io/github/license/Iwanian/Iwana-Proxy?style=for-the-badge)
 ![Stars](https://img.shields.io/github/stars/Iwanian/Iwana-Proxy?style=for-the-badge)
 ![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS%20%7C%20Android-blue?style=for-the-badge)
