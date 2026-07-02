@@ -13,7 +13,7 @@
 [![Release](https://img.shields.io/github/v/release/Iwanian/Iwana-Proxy?style=for-the-badge)](https://github.com/Iwanian/Iwana-Proxy/releases/tag/v1.0.0)
 [![License](https://img.shields.io/github/license/Iwanian/Iwana-Proxy?style=for-the-badge)](https://github.com/Iwanian/Iwana-Proxy/blob/main/LICENSE)
 [![Stars](https://img.shields.io/github/stars/Iwanian/Iwana-Proxy?style=for-the-badge)](https://github.com/Iwanian/Iwana-Proxy/stargazers)
-[![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS%20%7C%20Android-blue?style=for-the-badge)]
+![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS%20%7C%20Android-blue?style=for-the-badge)
 
 **ویندوز • لینوکس • macOS • اندروید**
 
@@ -38,15 +38,7 @@
 
 <div align="center">
 
-### ویندوز
-
 <img src="assets/screenshots/windows.png" width="900">
-
-### لینوکس
-
-<img src="assets/screenshots/linux.png" width="900">
-
-### اندروید
 
 <img src="assets/screenshots/android.png" width="300">
 
