@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>IwanaProxy</AssemblyName>
+    <RootNamespace>IwanaProxy</RootNamespace>
+    <ApplicationIcon>Assets\icon.ico</ApplicationIcon>
+
+    <!-- Publish settings: produces a single, self-contained .exe with no need
+         for the user to install the .NET runtime separately. -->
+    <SelfContained>true</SelfContained>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <PublishSingleFile>true</PublishSingleFile>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- ApplicationIcon above only sets the .exe file's icon in Explorer.
+         The runtime Icon="Assets/icon.ico" reference in MainWindow.xaml
+         needs the file separately registered as a WPF pack resource,
+         otherwise it throws IOException: Cannot locate resource at startup. -->
+    <Resource Include="Assets\icon.ico" />
+  </ItemGroup>
+
+</Project>
