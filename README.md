@@ -2,7 +2,7 @@
   
 فارسی | [🇺🇸 English](README.md) | [🇷🇺 Русский](README_RU.md) | [🇨🇳 中文](README_ZH.md) | [🇮🇳 हिन्दी](README_HI.md)
   
-<img src="[assets/logo.png](https://github.com/Iwanian/Iwana-Proxy/blob/main/XYZ/Iwana.jpg)" width="150">
+<img src="[(https://github.com/Iwanian/Iwana-Proxy/blob/main/XYZ/Iwana.jpg)]" width="150">
 
 # Iwana Proxy
 
