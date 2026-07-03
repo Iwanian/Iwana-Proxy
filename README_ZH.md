@@ -6,7 +6,7 @@
 
 一款快速、开源、跨平台的代理聚合工具，用于发现、测试和共享高质量代理。
 
-[🇮🇷 فارسی](README_FA.md) | [🇺🇸 English](README.md) | [🇷🇺 Русский](README_RU.md) | 🇨🇳 中文 | [🇮🇳 हिन्दी](README_HI.md)
+[فارسی](README_FA.md) | [English](README.md) | [Русский](README_RU.md) | 中文 | [हिन्दी](README_HI.md)
 
 <br>
 
