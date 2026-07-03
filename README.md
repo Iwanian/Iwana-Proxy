@@ -4,88 +4,90 @@
 
 # Iwana Proxy
 
-یک جمع‌آورنده متن‌باز، سریع و چندسکویی برای کشف، بررسی و اشتراک‌گذاری پروکسی‌ها.
+A fast, open-source, cross-platform application for discovering, testing, and sharing high-quality proxies.
 
-🇮🇷 فارسی | [🇺🇸 English](README.md) | [🇷🇺 Русский](README_RU.md) | [🇨🇳 中文](README_ZH.md) | [🇮🇳 हिन्दी](README_HI.md)
+[🇮🇷 فارسی](README_FA.md) | 🇺🇸 English | [🇷🇺 Русский](README_RU.md) | [🇨🇳 中文](README_ZH.md) | [🇮🇳 हिन्दी](README_HI.md)
 
 <br>
 
 [![Release](https://img.shields.io/github/v/release/Iwanian/Iwana-Proxy?style=for-the-badge)](https://github.com/Iwanian/Iwana-Proxy/releases/latest)
 [![License](https://img.shields.io/github/license/Iwanian/Iwana-Proxy?style=for-the-badge)](https://github.com/Iwanian/Iwana-Proxy/blob/main/LICENSE)
 [![Stars](https://img.shields.io/github/stars/Iwanian/Iwana-Proxy?style=for-the-badge)](https://github.com/Iwanian/Iwana-Proxy/stargazers)
-[![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS%20%7C%20Android-blue?style=for-the-badge)](#-دانلود)
+[![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS%20%7C%20Android-blue?style=for-the-badge)](#-download)
 
-ویندوز • لینوکس • macOS • اندروید
+Windows • Linux • macOS • Android
 
 </div>
 
 ---
 
-# ✨ ویژگی‌ها
+# ✨ Features
 
-- 🚀 رابط کاربری مدرن و ساده
-- 🌍 جمع‌آوری و بررسی پروکسی‌ها
-- 📡 تست تأخیر (Latency / Ping)
-- 📊 مرتب‌سازی هوشمند
-- 🌐 فیلتر بر اساس ریجن
-- 🔄 بروزرسانی خودکار
-- 💻 پشتیبانی از Windows، Linux، macOS و Android
-- ❤️ کاملاً متن‌باز و رایگان
+- 🚀 Clean and modern interface
+- 🌍 Discover and verify working proxies
+- 📡 Built-in latency (Ping) testing
+- 📊 Smart sorting based on performance
+- 🌐 Filter proxies by region
+- 🔄 Automatic proxy updates
+- 💻 Available on Windows, Linux, macOS, and Android
+- ❤️ Free and open source
 
 ---
 
-# 📷 تصاویر برنامه
+# 📷 Screenshots
 
 <div align="center">
 
 | Android | Desktop |
-|:--------:|:-------:|
+| :-----: | :-----: |
 | <img src="https://raw.githubusercontent.com/Iwanian/Iwana-Proxy/main/XYZ/androidimage.jpg" width="250"> | <img src="https://raw.githubusercontent.com/Iwanian/Iwana-Proxy/main/XYZ/pcimage.jpg" width="550"> |
 
 </div>
 
 ---
 
-# 📥 دانلود
+# 📥 Download
 
-| سیستم‌عامل | دانلود |
-|------------|---------|
-| 🪟 Windows | [آخرین نسخه](https://github.com/Iwanian/Iwana-Proxy/releases/latest) |
-| 🐧 Linux | [آخرین نسخه](https://github.com/Iwanian/Iwana-Proxy/releases/latest) |
-| 🍎 macOS | [آخرین نسخه](https://github.com/Iwanian/Iwana-Proxy/releases/latest) |
-| 🤖 Android | [آخرین نسخه](https://github.com/Iwanian/Iwana-Proxy/releases/latest) |
-
----
-
-# 🚀 شروع سریع
-
-1. آخرین نسخه را از بخش Releases دانلود کنید.
-2. زبان موردنظر خود را انتخاب کنید.
-3. روی اسکن پروکسی‌ها بزنید.
-4. پروکسی موردنظر خود را انتخاب کنید.
-5. در تلگرام متصل شوید.
+| Platform | Download |
+|----------|----------|
+| 🪟 Windows | [Latest Release](https://github.com/Iwanian/Iwana-Proxy/releases/latest) |
+| 🐧 Linux | [Latest Release](https://github.com/Iwanian/Iwana-Proxy/releases/latest) |
+| 🍎 macOS | [Latest Release](https://github.com/Iwanian/Iwana-Proxy/releases/latest) |
+| 🤖 Android | [Latest Release](https://github.com/Iwanian/Iwana-Proxy/releases/latest) |
 
 ---
 
-# 🤝 کمک به Iwana
+# 🚀 Quick Start
 
-اگر پروکسی سالم و باکیفیتی دارید، می‌توانید آن را از طریق ربات تلگرام برای ما ارسال کنید تا پس از بررسی، به سرور اضافه شود و همه کاربران از آن استفاده کنند.
+1. Download the latest version from the Releases page.
+2. Launch the application.
+3. Choose your preferred language.
+4. Click Scan Proxies.
+5. Select a proxy and connect.
 
-### 🤖 ربات ارسال پروکسی
+---
+
+# 🤝 Share Your Proxies
+
+Have a reliable proxy you'd like to share?
+
+Send it through our Telegram bot. After verification, it may be added to Iwana's proxy pool, making it available to all users.
+
+## 🤖 Proxy Submission Bot
 
 https://t.me/I_w_a_n_a_bot
 
-از همراهی شما ممنونیم ❤️
+Thank you for helping make Iwana Proxy better ❤️
 
 ---
 
-# ❤️ حمایت مالی
+# ❤️ Support the Project
 
-تمام امکانات Iwana Proxy رایگان بوده، رایگان هست و رایگان خواهد ماند.
+Iwana Proxy is free and will always remain free.
 
-اگر از این پروژه لذت برده‌اید و دوست دارید از توسعه آن حمایت کنید، می‌توانید از طریق ارزهای دیجیتال زیر کمک مالی انجام دهید.
+If you'd like to support the project's development, you can donate using the cryptocurrencies below.
 
-کمک‌های شما صرف توسعه سرویس های دیگر و انتشار نسخه iPhone (iOS) خواهد شد.
+Your support helps fund future improvements, additional services, and the upcoming iPhone (iOS) version.
 
 ### USDT (Polygon)
 
@@ -96,10 +98,9 @@ https://t.me/I_w_a_n_a_bot
 ### TRX (TRON)
 
 TFaCWNT4N9wHJ2e1Z9MSuz1waUoMseRGqx
-
 ---
 
-# 🛣 نقشه راه
+# 🛣 Roadmap
 
 - [x] Android
 - [x] Windows
@@ -109,26 +110,28 @@ TFaCWNT4N9wHJ2e1Z9MSuz1waUoMseRGqx
 
 ---
 
-# 🤝 مشارکت
+# 🤝 Contributing
 
-از مشارکت شما استقبال می‌کنیم.
+Contributions are always welcome.
 
-اگر باگی پیدا کردید، پیشنهادی دارید یا ایده‌ای برای بهتر شدن پروژه به ذهنتان رسید، از طریق تلگرام با ما در ارتباط باشید.
+Found a bug? Have an idea or suggestion?
+
+Feel free to contact us through Telegram:
 
 👉 https://t.me/I_w_a_n_a?direct
 
 ---
 
-# ⭐ اگر Iwana را دوست داشتید
+# ⭐ Star the Project
 
-اگر این پروژه برایتان مفید بوده است، با دادن یک ⭐ Star به این ریپازیتوری از ما حمایت کنید.
+If you find Iwana Proxy useful, consider giving this repository a ⭐ Star.
 
-ستاره دادن کاملاً رایگان است، اما به دیده شدن پروژه کمک بزرگی می‌کند و باعث می‌شود افراد بیشتری با Iwana Proxy آشنا شوند.
+It costs nothing, helps the project reach more people, and encourages further development.
 
 ---
 
-# 📄 مجوز
+# 📄 License
 
-این پروژه تحت مجوز MIT License منتشر شده است.
+This project is licensed under the MIT License.
 
-برای اطلاعات بیشتر فایل [LICENSE](LICENSE) را مطالعه کنید.
+See the [LICENSE](LICENSE) file for more details.
