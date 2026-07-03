@@ -6,7 +6,7 @@
 
 یک جمع‌آورنده متن‌باز، سریع و چندسکویی برای کشف، بررسی و اشتراک‌گذاری پروکسی‌ها.
 
-🇮🇷 فارسی | [🇺🇸 English](README.md) | [🇷🇺 Русский](README_RU.md) | [🇨🇳 中文](README_ZH.md) | [🇮🇳 हिन्दी](README_HI.md)
+ فارسی | [English](README.md) | [Русский](README_RU.md) | [中文](README_ZH.md) | [हिन्दी](README_HI.md)
 
 <br>
 
