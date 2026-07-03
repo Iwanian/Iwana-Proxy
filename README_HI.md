@@ -6,7 +6,7 @@
 
 A fast, open-source, cross-platform application for discovering, testing, and sharing high-quality proxies.
 
-[🇮🇷 فارسی](README_FA.md) | [🇺🇸 English](README.md) | [🇷🇺 Русский](README_RU.md) | [🇨🇳 中文](README_ZH.md) | 🇮🇳 हिन्दी
+[فارسی](README_FA.md) | [English](README.md) | [Русский](README_RU.md) | [中文](README_ZH.md) | हिन्दी
 
 <br>
 
