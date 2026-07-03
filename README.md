@@ -38,9 +38,9 @@
 
 <div align="center">
 
-<img src="assets/screenshots/windows.png" width="900">
+<img src="https://github.com/Iwanian/Iwana-Proxy/blob/main/XYZ/androidimage.jpg" width="900">
 
-<img src="assets/screenshots/android.png" width="300">
+<img src="https://github.com/Iwanian/Iwana-Proxy/blob/main/XYZ/pcimage.jpg" width="300">
 
 </div>
 
