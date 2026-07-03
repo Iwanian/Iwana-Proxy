@@ -1,0 +1,96 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="IwanaProxy.SettingsWindow"
+        Title="Settings" Height="380" Width="360"
+        CanResize="False"
+        WindowStartupLocation="CenterOwner"
+        Background="{DynamicResource BgBrush}">
+
+    <Window.Styles>
+        <Style Selector="Button.themeToggle">
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="Padding" Value="0,10"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        </Style>
+        <Style Selector="Button.themeToggle.active">
+            <Setter Property="Background" Value="{DynamicResource AccentBrush}"/>
+        </Style>
+        <Style Selector="Button.themeToggle TextBlock">
+            <Setter Property="Foreground" Value="{DynamicResource TextSecondaryBrush}"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+        </Style>
+        <Style Selector="Button.themeToggle.active TextBlock">
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+
+        <Style Selector="RadioButton.langOption">
+            <Setter Property="Margin" Value="0,5"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Foreground" Value="{DynamicResource TextPrimaryBrush}"/>
+        </Style>
+
+        <Style Selector="Button.saveButton">
+            <Setter Property="Background" Value="{DynamicResource AccentBrush}"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="Padding" Value="0,12"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        </Style>
+    </Window.Styles>
+
+    <Grid Margin="24,20" RowDefinitions="Auto,18,Auto,18,Auto,*,Auto">
+
+        <!-- Title -->
+        <TextBlock Grid.Row="0" x:Name="TitleText" Text="Settings"
+                   FontSize="20" FontWeight="Bold"
+                   Foreground="{DynamicResource AccentBrush}"/>
+
+        <!-- Theme toggle -->
+        <StackPanel Grid.Row="2">
+            <TextBlock x:Name="ThemeLabel" Text="Theme"
+                       FontSize="12" FontWeight="SemiBold"
+                       Foreground="{DynamicResource TextSecondaryBrush}"
+                       Margin="0,0,0,8"/>
+            <Border Background="{DynamicResource CardBrush}" CornerRadius="10" Padding="4">
+                <Grid ColumnDefinitions="*,*">
+                    <Button Grid.Column="0" x:Name="DarkBtn" Classes="themeToggle" Click="DarkBtn_Click">
+                        <TextBlock x:Name="DarkBtnText" Text="🌙  Dark"/>
+                    </Button>
+                    <Button Grid.Column="1" x:Name="LightBtn" Classes="themeToggle" Click="LightBtn_Click">
+                        <TextBlock x:Name="LightBtnText" Text="☀️  Light"/>
+                    </Button>
+                </Grid>
+            </Border>
+        </StackPanel>
+
+        <!-- Language -->
+        <StackPanel Grid.Row="4">
+            <TextBlock x:Name="LangLabel" Text="Language"
+                       FontSize="12" FontWeight="SemiBold"
+                       Foreground="{DynamicResource TextSecondaryBrush}"
+                       Margin="0,0,0,8"/>
+            <Border Background="{DynamicResource CardBrush}" CornerRadius="10" Padding="10,8">
+                <StackPanel>
+                    <RadioButton x:Name="LangEn" Content="🇬🇧  English"  GroupName="Lang" Classes="langOption" Click="Lang_Click"/>
+                    <RadioButton x:Name="LangFa" Content="🇮🇷  فارسی"    GroupName="Lang" Classes="langOption" Click="Lang_Click"/>
+                    <RadioButton x:Name="LangRu" Content="🇷🇺  Русский"  GroupName="Lang" Classes="langOption" Click="Lang_Click"/>
+                    <RadioButton x:Name="LangZh" Content="🇨🇳  中文"      GroupName="Lang" Classes="langOption" Click="Lang_Click"/>
+                    <RadioButton x:Name="LangHi" Content="🇮🇳  हिन्दी"   GroupName="Lang" Classes="langOption" Click="Lang_Click"/>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+
+        <!-- Save & close -->
+        <Button Grid.Row="6" x:Name="CloseBtn" Click="CloseBtn_Click" Classes="saveButton">
+            <TextBlock x:Name="CloseBtnText" Text="Save" Foreground="White" FontWeight="Bold" FontSize="14"/>
+        </Button>
+    </Grid>
+</Window>

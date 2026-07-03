@@ -1,0 +1,232 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:IwanaProxy.Models"
+        x:Class="IwanaProxy.MainWindow"
+        x:Name="RootWindow"
+        Title="Iwana Proxy" Height="680" Width="420"
+        MinHeight="500" MinWidth="360"
+        Background="{DynamicResource BgBrush}"
+        FontFamily="Segoe UI,Helvetica Neue,Arial,sans-serif"
+        WindowStartupLocation="CenterScreen">
+
+    <Window.Styles>
+        <!-- Settings / icon button -->
+        <Style Selector="Button.iconButton">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Foreground" Value="{DynamicResource TextPrimaryBrush}"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Padding" Value="8,6"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="CornerRadius" Value="8"/>
+        </Style>
+        <Style Selector="Button.iconButton:pointerover /template/ ContentPresenter">
+            <Setter Property="Background" Value="{DynamicResource IconButtonHoverBrush}"/>
+        </Style>
+
+        <!-- Primary blue button -->
+        <Style Selector="Button.primaryButton">
+            <Setter Property="Background" Value="{DynamicResource AccentBrush}"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Padding" Value="14,7"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        </Style>
+        <Style Selector="Button.primaryButton:pointerover /template/ ContentPresenter">
+            <Setter Property="Opacity" Value="0.85"/>
+        </Style>
+
+        <!-- Copy / small outline button -->
+        <Style Selector="Button.copyButton">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="{DynamicResource TextSecondaryBrush}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Padding" Value="6,4"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="CornerRadius" Value="6"/>
+        </Style>
+        <Style Selector="Button.copyButton:pointerover /template/ ContentPresenter">
+            <Setter Property="Background" Value="{DynamicResource IconButtonHoverBrush}"/>
+        </Style>
+
+        <!-- Big scan / refresh bottom button -->
+        <Style Selector="Button.scanButton">
+            <Setter Property="Background" Value="{DynamicResource AccentBrush}"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Padding" Value="0,14"/>
+            <Setter Property="CornerRadius" Value="12"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        </Style>
+        <Style Selector="Button.scanButton:pointerover /template/ ContentPresenter">
+            <Setter Property="Opacity" Value="0.88"/>
+        </Style>
+
+        <!-- List item container: no selection highlight -->
+        <Style Selector="ListBoxItem">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="Margin" Value="0,0,0,8"/>
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            <Setter Property="CornerRadius" Value="0"/>
+        </Style>
+        <Style Selector="ListBoxItem:selected /template/ ContentPresenter">
+            <Setter Property="Background" Value="Transparent"/>
+        </Style>
+        <Style Selector="ListBoxItem:pointerover /template/ ContentPresenter">
+            <Setter Property="Background" Value="Transparent"/>
+        </Style>
+
+        <!-- Status badge: default offline colors, .online class swaps them -->
+        <Style Selector="Border.statusBadge">
+            <Setter Property="Background" Value="{DynamicResource PingBgDeadBrush}"/>
+        </Style>
+        <Style Selector="Border.statusBadge.online">
+            <Setter Property="Background" Value="{DynamicResource PingBgAliveBrush}"/>
+        </Style>
+        <Style Selector="TextBlock.statusText">
+            <Setter Property="Foreground" Value="{DynamicResource TextSecondaryBrush}"/>
+        </Style>
+        <Style Selector="TextBlock.statusText.online">
+            <Setter Property="Foreground" Value="{DynamicResource AliveBrush}"/>
+        </Style>
+        <Style Selector="TextBlock.pingValue">
+            <Setter Property="Foreground" Value="{DynamicResource TextPrimaryBrush}"/>
+        </Style>
+        <Style Selector="TextBlock.pingValue.online">
+            <Setter Property="Foreground" Value="{DynamicResource AccentBrush}"/>
+        </Style>
+    </Window.Styles>
+
+    <Grid RowDefinitions="Auto,Auto,*,Auto">
+
+        <!-- ══════════════ HEADER ══════════════ -->
+        <Border Grid.Row="0" Background="{DynamicResource CardBrush}" Padding="16,14,16,14">
+            <Grid ColumnDefinitions="Auto,*,Auto">
+
+                <!-- Settings gear -->
+                <Button Grid.Column="0" x:Name="SettingsBtn" Content="⚙" Classes="iconButton"
+                        VerticalAlignment="Center" Click="SettingsButton_Click"/>
+
+                <!-- Title + status (right aligned like screenshot) -->
+                <StackPanel Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center">
+                    <TextBlock x:Name="TitleText" Text="Iwana Proxy"
+                               FontSize="22" FontWeight="Bold"
+                               Foreground="{DynamicResource AccentBrush}"
+                               HorizontalAlignment="Right"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,2,0,0">
+                        <TextBlock x:Name="StatusText" FontSize="11" FontWeight="SemiBold"
+                                   Foreground="{DynamicResource TextSecondaryBrush}"
+                                   VerticalAlignment="Center"/>
+                        <Ellipse Width="8" Height="8" Margin="6,0,0,0" VerticalAlignment="Center"
+                                 Fill="{DynamicResource AliveBrush}"/>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- ══════════════ CHANNEL BANNER ══════════════ -->
+        <Border Grid.Row="1" Background="{DynamicResource Card2Brush}" Padding="16,10">
+            <Grid ColumnDefinitions="Auto,*">
+
+                <Button Grid.Column="0" x:Name="ChannelBtn"
+                        Content="I_w_a_n_a@"
+                        Classes="primaryButton"
+                        Click="ChannelButton_Click"
+                        Margin="0,0,12,0"/>
+
+                <TextBlock Grid.Column="1" x:Name="FollowText" FontSize="12"
+                           Foreground="{DynamicResource TextSecondaryBrush}"
+                           HorizontalAlignment="Right" VerticalAlignment="Center"
+                           Text="🙏 Please follow us on Telegram @I_w_a_n_a"/>
+            </Grid>
+        </Border>
+
+        <!-- ══════════════ PROXY LIST ══════════════ -->
+        <ListBox x:Name="ProxyList" Grid.Row="2"
+                 Background="Transparent" BorderThickness="0"
+                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                 Padding="10,8,10,0">
+            <ListBox.ItemTemplate>
+                <DataTemplate x:DataType="vm:ProxyItem">
+                    <Border Background="{DynamicResource CardBrush}" CornerRadius="12" Padding="14,12">
+                        <StackPanel>
+                            <!-- Top row: status badge + proxy name + copy -->
+                            <Grid ColumnDefinitions="*,Auto,Auto">
+
+                                <!-- Proxy number and IP:Port -->
+                                <StackPanel Grid.Column="0" VerticalAlignment="Center">
+                                    <TextBlock FontSize="15" FontWeight="SemiBold"
+                                               Foreground="{DynamicResource TextPrimaryBrush}"
+                                               Text="{Binding Id, StringFormat='Proxy #{0}'}"/>
+                                    <TextBlock Text="{Binding ServerDisplay}"
+                                               FontSize="12" FontFamily="Consolas,Menlo,monospace"
+                                               Foreground="{DynamicResource TextSecondaryBrush}"
+                                               Margin="0,3,0,0"/>
+                                </StackPanel>
+
+                                <!-- ONLINE / OFFLINE badge -->
+                                <Border Grid.Column="1" Classes="statusBadge" Classes.online="{Binding IsAlive}"
+                                        CornerRadius="4" Padding="8,3" Margin="8,0" VerticalAlignment="Center">
+                                    <TextBlock Text="{Binding StatusDisplay}" Classes="statusText" Classes.online="{Binding IsAlive}"
+                                               FontSize="10" FontWeight="Bold"/>
+                                </Border>
+
+                                <!-- Copy button -->
+                                <Button Grid.Column="2" Content="⧉" Classes="copyButton"
+                                        Click="CopyButton_Click" Tag="{Binding}"
+                                        VerticalAlignment="Center" ToolTip.Tip="Copy proxy link"/>
+                            </Grid>
+
+                            <!-- Divider -->
+                            <Border Height="1" Background="{DynamicResource DividerBrush}" Margin="0,10,0,10"/>
+
+                            <!-- Bottom row: latency + connect button -->
+                            <Grid ColumnDefinitions="*,Auto">
+
+                                <!-- Latency display like screenshot: ms104 LATENCY -->
+                                <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
+                                    <TextBlock FontSize="10" Foreground="{DynamicResource TextSecondaryBrush}"
+                                               VerticalAlignment="Bottom" Margin="0,0,0,1" Text="ms"/>
+                                    <TextBlock Text="{Binding PingMs}" Classes="pingValue" Classes.online="{Binding IsAlive}"
+                                               FontSize="22" FontWeight="Bold"/>
+                                    <TextBlock FontSize="9" FontWeight="SemiBold" VerticalAlignment="Bottom"
+                                               Foreground="{DynamicResource TextSecondaryBrush}"
+                                               Margin="4,0,0,2" Text="LATENCY"/>
+                                </StackPanel>
+
+                                <!-- Connect button -->
+                                <Button Grid.Column="1" x:Name="ConnectBtn"
+                                        Classes="primaryButton"
+                                        Click="ConnectButton_Click" Tag="{Binding}"
+                                        MinWidth="90">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="▶  " VerticalAlignment="Center" FontSize="11"/>
+                                        <TextBlock Text="Connect" VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                </Button>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <!-- ══════════════ SCAN BUTTON ══════════════ -->
+        <Border Grid.Row="3" Background="{DynamicResource CardBrush}" Padding="14,12">
+            <Button x:Name="ScanBtn" Classes="scanButton"
+                    HorizontalAlignment="Stretch"
+                    Click="RefreshButton_Click">
+                <TextBlock x:Name="ScanBtnText" Text="⚡  SCAN PROXIES" FontSize="15" FontWeight="Bold"/>
+            </Button>
+        </Border>
+    </Grid>
+</Window>
