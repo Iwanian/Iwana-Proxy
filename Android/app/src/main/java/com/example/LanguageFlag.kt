@@ -24,55 +24,9 @@ fun LanguageFlag(
     size: Dp = 24.dp,
     modifier: Modifier = Modifier
 ) {
-    if (optionCode == "fa") {
-        // Draw the simplified design: 3 equal bands (Green, White, Red) and a golden circle in the center.
-        Card(
-            modifier = modifier
-                .width(size * 1.5f)
-                .height(size),
-            shape = RoundedCornerShape(3.dp),
-            colors = CardDefaults.cardColors(containerColor = Color.White),
-            elevation = CardDefaults.cardElevation(defaultElevation = 1.dp)
-        ) {
-            Canvas(modifier = Modifier.fillMaxSize()) {
-                val w = this.size.width
-                val h = this.size.height
-
-                // Green band (نوار سبز) - rgb(0, 153, 0)
-                drawRect(
-                    color = Color(0, 153, 0),
-                    topLeft = Offset(0f, 0f),
-                    size = androidx.compose.ui.geometry.Size(w, h / 3f)
-                )
-
-                // White band (نوار سفید) - WHITE
-                drawRect(
-                    color = Color.White,
-                    topLeft = Offset(0f, h / 3f),
-                    size = androidx.compose.ui.geometry.Size(w, h / 3f)
-                )
-
-                // Red band (نوار قرمز) - rgb(204, 0, 0)
-                drawRect(
-                    color = Color(204, 0, 0),
-                    topLeft = Offset(0f, 2f * h / 3f),
-                    size = androidx.compose.ui.geometry.Size(w, h / 3f)
-                )
-
-                // Central golden circle (نماد مرکزی ساده - دایره طلایی) - rgb(255, 215, 0) of radius h / 10
-                drawCircle(
-                    color = Color(255, 215, 0),
-                    radius = h / 10f,
-                    center = Offset(w / 2f, h / 2f)
-                )
-            }
-        }
-    } else {
-        // Fallback for standard ISO emoji flags
-        Text(
-            text = emoji,
-            fontSize = (size.value * 1.1f).sp,
-            modifier = modifier
-        )
-    }
+    Text(
+        text = emoji,
+        fontSize = (size.value * 1.1f).sp,
+        modifier = modifier
+    )
 }

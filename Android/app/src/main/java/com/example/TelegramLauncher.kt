@@ -37,8 +37,10 @@ object TelegramLauncher {
         // Attempt to direct launch via Telegram packages to bypass browsers entirely
         val telegramPackages = listOf(
             "org.telegram.messenger",
+            "org.telegram.plus",
             "org.thunderdog.challegram",  // Telegram X
-            "org.telegram.messenger.web"
+            "org.telegram.messenger.web",
+            "org.telegram.BETA"
         )
         
         var launched = false

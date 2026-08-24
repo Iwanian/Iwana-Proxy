@@ -8,9 +8,9 @@ import android.widget.Toast
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Bookmark
+import androidx.compose.material.icons.filled.BookmarkBorder
 import androidx.compose.material.icons.filled.ContentCopy
-import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material.icons.filled.Speed
 import androidx.compose.material.icons.filled.Send
@@ -25,13 +25,15 @@ import androidx.compose.ui.res.stringResource
 import com.example.ui.theme.isAppDarkTheme
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
 fun ProxyCard(
     proxy: ProxyItem,
-    onFavoriteToggle: (ProxyItem) -> Unit,
+    isSaved: Boolean = false,
+    onToggleSave: (() -> Unit)? = null,
     modifier: Modifier = Modifier
 ) {
     val context = LocalContext.current
@@ -70,7 +72,7 @@ fun ProxyCard(
                 .fillMaxWidth()
                 .padding(16.dp)
         ) {
-            // Header: Proxy Title and Latency Stats
+            // Header: Proxy Name (Proxy N) and Latency Stats
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically,
@@ -85,10 +87,12 @@ fun ProxyCard(
                         horizontalArrangement = Arrangement.spacedBy(8.dp)
                     ) {
                         Text(
-                            text = "Proxy #${proxy.id}",
-                            style = MaterialTheme.typography.titleMedium,
+                            text = "Proxy ${proxy.id}",
+                            fontSize = 17.sp,
                             fontWeight = FontWeight.Bold,
-                            color = MaterialTheme.colorScheme.onSurface
+                            color = MaterialTheme.colorScheme.onSurface,
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis
                         )
                         // Status tag
                         if (!proxy.isScanned) {
@@ -104,14 +108,27 @@ fun ProxyCard(
                                     modifier = Modifier.padding(horizontal = 6.dp, vertical = 2.dp)
                                 )
                             }
-                        } else {
+                        } else if (proxy.isAlive && proxy.ping > 0) {
                             Surface(
                                 color = Color(0xFFE2F5EA),
                                 shape = RoundedCornerShape(6.dp)
                             ) {
                                 Text(
-                                    text = "ONLINE",
+                                    text = stringResource(R.string.online_status),
                                     color = Color(0xFF1B5E20),
+                                    style = MaterialTheme.typography.labelSmall,
+                                    fontWeight = FontWeight.Bold,
+                                    modifier = Modifier.padding(horizontal = 6.dp, vertical = 2.dp)
+                                )
+                            }
+                        } else {
+                            Surface(
+                                color = MaterialTheme.colorScheme.errorContainer.copy(alpha = 0.5f),
+                                shape = RoundedCornerShape(6.dp)
+                            ) {
+                                Text(
+                                    text = stringResource(R.string.offline_failed_status),
+                                    color = MaterialTheme.colorScheme.error,
                                     style = MaterialTheme.typography.labelSmall,
                                     fontWeight = FontWeight.Bold,
                                     modifier = Modifier.padding(horizontal = 6.dp, vertical = 2.dp)
@@ -125,7 +142,9 @@ fun ProxyCard(
                         style = MaterialTheme.typography.bodySmall,
                         fontFamily = FontFamily.Monospace,
                         fontWeight = FontWeight.Medium,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.8f)
+                        color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.75f),
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
                     )
                 }
 
@@ -150,7 +169,7 @@ fun ProxyCard(
                             color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.4f),
                             letterSpacing = 0.5.sp
                         )
-                    } else {
+                    } else if (proxy.isAlive && proxy.ping > 0) {
                         Row(
                             verticalAlignment = Alignment.Bottom,
                             horizontalArrangement = Arrangement.End
@@ -174,6 +193,21 @@ fun ProxyCard(
                             style = MaterialTheme.typography.labelSmall,
                             fontWeight = FontWeight.Bold,
                             color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f),
+                            letterSpacing = 0.5.sp
+                        )
+                    } else {
+                        Text(
+                            text = "--",
+                            style = MaterialTheme.typography.titleLarge,
+                            fontWeight = FontWeight.Black,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.4f),
+                            fontSize = 20.sp
+                        )
+                        Text(
+                            text = "TIMEOUT",
+                            style = MaterialTheme.typography.labelSmall,
+                            fontWeight = FontWeight.Bold,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.4f),
                             letterSpacing = 0.5.sp
                         )
                     }
@@ -200,9 +234,9 @@ fun ProxyCard(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                // Clipboard, Share, and Favorites utilities
+                // Clipboard and Save utilities
                 Row(
-                    horizontalArrangement = Arrangement.spacedBy(2.dp)
+                    horizontalArrangement = Arrangement.spacedBy(4.dp)
                 ) {
                     IconButton(
                         onClick = {
@@ -221,16 +255,22 @@ fun ProxyCard(
                         )
                     }
 
-                    IconButton(
-                        onClick = { onFavoriteToggle(proxy) },
-                        modifier = Modifier.size(36.dp)
-                    ) {
-                        Icon(
-                            imageVector = if (proxy.isFavorite) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
-                            contentDescription = "Toggle Favorite",
-                            tint = if (proxy.isFavorite) Color(0xFFFF1744) else MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f),
-                            modifier = Modifier.size(18.dp)
-                        )
+                    if (onToggleSave != null) {
+                        IconButton(
+                            onClick = {
+                                onToggleSave()
+                                val messageRes = if (!isSaved) R.string.saved_toast else R.string.removed_toast
+                                Toast.makeText(context, context.getString(messageRes), Toast.LENGTH_SHORT).show()
+                            },
+                            modifier = Modifier.size(36.dp)
+                        ) {
+                            Icon(
+                                imageVector = if (isSaved) Icons.Default.Bookmark else Icons.Default.BookmarkBorder,
+                                contentDescription = stringResource(R.string.save),
+                                tint = if (isSaved) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f),
+                                modifier = Modifier.size(20.dp)
+                            )
+                        }
                     }
                 }
                 

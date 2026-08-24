@@ -23,8 +23,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.Density
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.ViewModel
@@ -35,20 +39,32 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.ui.theme.MyApplicationTheme
 import kotlinx.coroutines.flow.first
+import okhttp3.Cache
+import okhttp3.OkHttpClient
+import java.io.File
+import java.util.concurrent.TimeUnit
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         
-        // Initialize Core Dependencies
+        // Initialize Core Dependencies with HTTP Disk Cache
         val dataStoreManager = DataStoreManager(applicationContext)
-        val repository = ProxyRepository()
+        val okHttpClient = OkHttpClient.Builder()
+            .cache(Cache(File(applicationContext.cacheDir, "http_cache"), 30L * 1024 * 1024))
+            .connectTimeout(8, TimeUnit.SECONDS)
+            .readTimeout(8, TimeUnit.SECONDS)
+            .writeTimeout(8, TimeUnit.SECONDS)
+            .build()
+
+        val repository = ProxyRepository(client = okHttpClient)
+        val bannerRepository = BannerRepository(client = okHttpClient)
         
         // Instantiate our unique shared ProxyViewModel with safe manual constructor factory injection
         val viewModel = ViewModelProvider(this, object : ViewModelProvider.Factory {
             @Suppress("UNCHECKED_CAST")
             override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                return ProxyViewModel(repository, dataStoreManager) as T
+                return ProxyViewModel(repository, dataStoreManager, bannerRepository) as T
             }
         })[ProxyViewModel::class.java]
 
@@ -70,17 +86,32 @@ class MainActivity : ComponentActivity() {
                 else -> androidx.compose.foundation.isSystemInDarkTheme()
             }
             
-            CompositionLocalProvider(LocalContext provides localizedContext) {
+            val layoutDirection = remember(selectedLanguage) {
+                if (selectedLanguage == "fa") LayoutDirection.Rtl else LayoutDirection.Ltr
+            }
+
+            // Clamp extreme system font scaling to maintain safe layout bounds
+            val currentDensity = LocalDensity.current
+            val clampedDensity = remember(currentDensity) {
+                Density(
+                    density = currentDensity.density,
+                    fontScale = currentDensity.fontScale.coerceIn(0.85f, 1.15f)
+                )
+            }
+
+            CompositionLocalProvider(
+                LocalContext provides localizedContext,
+                LocalLayoutDirection provides layoutDirection,
+                LocalDensity provides clampedDensity
+            ) {
                 MyApplicationTheme(darkTheme = darkTheme) {
                     val navController = rememberNavController()
                     
-                    Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                    Box(modifier = Modifier.fillMaxSize()) {
                         NavHost(
                             navController = navController,
                             startDestination = "splash",
-                            modifier = Modifier
-                                .fillMaxSize()
-                                .padding(innerPadding)
+                            modifier = Modifier.fillMaxSize()
                         ) {
                             // Asynchronous Splash/Onboard redirection checkpoint
                             composable("splash") {
@@ -161,6 +192,45 @@ class MainActivity : ComponentActivity() {
                             // Preferences Configuration (Switch and Locale change) screen
                             composable("settings") {
                                 SettingsScreen(
+                                    viewModel = viewModel,
+                                    onBackClick = {
+                                        navController.popBackStack()
+                                    },
+                                    onNavigateToSavedProxies = {
+                                        navController.navigate("saved_proxies")
+                                    },
+                                    onNavigateToSpeedTest = {
+                                        navController.navigate("proxy_speed_test")
+                                    },
+                                    onNavigateToSupport = {
+                                        navController.navigate("support")
+                                    }
+                                )
+                            }
+
+                            // Saved Proxies screen
+                            composable("saved_proxies") {
+                                SavedProxiesScreen(
+                                    viewModel = viewModel,
+                                    onBackClick = {
+                                        navController.popBackStack()
+                                    }
+                                )
+                            }
+
+                            // Proxy Speed Test screen
+                            composable("proxy_speed_test") {
+                                ProxySpeedTestScreen(
+                                    viewModel = viewModel,
+                                    onBackClick = {
+                                        navController.popBackStack()
+                                    }
+                                )
+                            }
+
+                            // Support Us Screen
+                            composable("support") {
+                                SupportScreen(
                                     viewModel = viewModel,
                                     onBackClick = {
                                         navController.popBackStack()

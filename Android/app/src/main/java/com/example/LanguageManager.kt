@@ -13,11 +13,9 @@ object LanguageManager {
     )
 
     val supportedLanguages = listOf(
+        LangOption("fa", "فارسی", "❤️"),
         LangOption("en", "English", "🇺🇸"),
-        LangOption("fa", "فارسی", "🇮🇷"),
-        LangOption("ru", "Русский", "🇷🇺"),
-        LangOption("zh", "中文", "🇨🇳"),
-        LangOption("hi", "हिन्दी", "🇮🇳")
+        LangOption("ru", "Русский", "🇷🇺")
     )
 
     fun wrapContext(context: Context, languageCode: String?): Context {
@@ -26,8 +24,6 @@ object LanguageManager {
         val locale = when (languageCode) {
             "fa" -> Locale("fa")
             "ru" -> Locale("ru")
-            "zh" -> Locale("zh")
-            "hi" -> Locale("hi")
             else -> Locale("en")
         }
         

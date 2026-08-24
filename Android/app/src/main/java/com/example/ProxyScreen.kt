@@ -5,6 +5,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
@@ -16,8 +17,6 @@ import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.Schedule
 import androidx.compose.material.icons.filled.Bolt
 import androidx.compose.material3.*
-import androidx.compose.material3.pulltorefresh.PullToRefreshBox
-import androidx.compose.material3.pulltorefresh.rememberPullToRefreshState
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -50,21 +49,16 @@ fun ProxyScreen(
     val focusManager = LocalFocusManager.current
 
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-    val isRefreshing by viewModel.isRefreshing.collectAsStateWithLifecycle()
     val displayProxies by viewModel.displayProxies.collectAsStateWithLifecycle()
-    val favorites by viewModel.favorites.collectAsStateWithLifecycle()
-    val autoScan by viewModel.autoScan.collectAsStateWithLifecycle()
+    val isOfflineNoticeVisible by viewModel.isOfflineNoticeVisible.collectAsStateWithLifecycle()
+    val savedLinks by viewModel.savedLinks.collectAsStateWithLifecycle()
+    val bannerItems by viewModel.bannerItems.collectAsStateWithLifecycle()
+    val bannerSliderEnabled by viewModel.bannerSliderEnabled.collectAsStateWithLifecycle()
 
-    var activeTab by remember { mutableStateOf(0) } // 0 = All, 1 = Favorites
-    val pullToRefreshState = rememberPullToRefreshState()
+    val listState = rememberLazyListState()
 
-    // Filter displayed list locally based on current tab selection
-    val tabFilteredProxies = remember(displayProxies, activeTab) {
-        if (activeTab == 0) {
-            displayProxies
-        } else {
-            displayProxies.filter { it.isFavorite }
-        }
+    LaunchedEffect(displayProxies) {
+        listState.scrollToItem(0)
     }
 
     // Pulse animation for "System Ready" active dot status indicator
@@ -83,19 +77,21 @@ fun ProxyScreen(
         topBar = {
             // Elegant left-aligned branding header with status indicator matching the "Professional Polish" html
             Surface(
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .statusBarsPadding(),
                 color = MaterialTheme.colorScheme.background
             ) {
                 Row(
                     modifier = Modifier
-                        .statusBarsPadding()
                         .fillMaxWidth()
-                        .padding(horizontal = 20.dp, vertical = 14.dp),
+                        .padding(horizontal = 20.dp, vertical = 0.dp),
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Column(
-                        verticalArrangement = Arrangement.spacedBy(4.dp)
+                        verticalArrangement = Arrangement.spacedBy(2.dp),
+                        modifier = Modifier.padding(top = 2.dp, bottom = 4.dp)
                     ) {
                         Text(
                             text = "Iwana Proxy",
@@ -116,7 +112,7 @@ fun ProxyScreen(
                                 color = Color(0xFF4CAF50)
                             ) {}
                             Text(
-                                text = "SYSTEM READY",
+                                text = "SYSTEM READY (${displayProxies.count { it.isAlive }})",
                                 style = MaterialTheme.typography.labelSmall,
                                 fontWeight = FontWeight.Bold,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.62f),
@@ -168,31 +164,15 @@ fun ProxyScreen(
                 Column(
                     modifier = Modifier
                         .navigationBarsPadding()
-                        .padding(horizontal = 20.dp, vertical = 18.dp),
-                    verticalArrangement = Arrangement.spacedBy(16.dp)
+                        .padding(horizontal = 20.dp, vertical = 8.dp),
+                    verticalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceBetween,
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                        Column {
-                            Text(
-                                text = "Auto Scan",
-                                fontWeight = FontWeight.Bold,
-                                style = MaterialTheme.typography.bodyMedium,
-                                color = MaterialTheme.colorScheme.onSurface
-                            )
-                            Text(
-                                text = "Refresh every 15s",
-                                style = MaterialTheme.typography.labelMedium,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.6f)
-                            )
-                        }
-                        Switch(
-                            checked = autoScan,
-                            onCheckedChange = { viewModel.toggleAutoScan(it) }
-                        )
+                        // Placeholder for layout balance
                     }
 
                     Button(
@@ -203,7 +183,7 @@ fun ProxyScreen(
                         shape = RoundedCornerShape(20.dp),
                         modifier = Modifier
                             .fillMaxWidth()
-                            .height(54.dp)
+                            .height(48.dp)
                     ) {
                         Row(
                             verticalAlignment = Alignment.CenterVertically,
@@ -216,7 +196,7 @@ fun ProxyScreen(
                                 modifier = Modifier.size(20.dp)
                             )
                             Text(
-                                text = "SCAN PROXIES",
+                                text = stringResource(R.string.scan_proxies_caps),
                                 fontWeight = FontWeight.Bold,
                                 fontSize = 15.sp,
                                 letterSpacing = 1.sp,
@@ -234,6 +214,43 @@ fun ProxyScreen(
                 .fillMaxSize()
                 .padding(innerPadding)
         ) {
+            // 0. Offline Cached Proxies Notice
+            if (isOfflineNoticeVisible) {
+                Card(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp, vertical = 6.dp),
+                    shape = RoundedCornerShape(16.dp),
+                    colors = CardDefaults.cardColors(
+                        containerColor = MaterialTheme.colorScheme.errorContainer.copy(alpha = 0.5f)
+                    ),
+                    border = CardDefaults.outlinedCardBorder().copy(
+                        brush = androidx.compose.ui.graphics.SolidColor(MaterialTheme.colorScheme.error.copy(alpha = 0.35f))
+                    )
+                ) {
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 16.dp, vertical = 12.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Text(
+                            text = stringResource(R.string.offline_notice),
+                            style = MaterialTheme.typography.bodyMedium,
+                            fontWeight = FontWeight.SemiBold,
+                            color = MaterialTheme.colorScheme.onErrorContainer
+                        )
+                    }
+                }
+            }
+
+            // 0.5 Ad Banner Slideshow
+            if (bannerSliderEnabled && bannerItems.isNotEmpty()) {
+                AdBannerSlideshow(
+                    banners = bannerItems
+                )
+            }
+
             // 1. Disclaimer Card: Polished rounded banner
             Card(
                 modifier = Modifier
@@ -251,110 +268,26 @@ fun ProxyScreen(
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(16.dp),
-                    verticalArrangement = Arrangement.spacedBy(6.dp)
+                        .padding(horizontal = 18.dp, vertical = 14.dp)
                 ) {
                     Text(
-                        text = "DISCLAIMER",
-                        style = MaterialTheme.typography.labelSmall,
-                        fontWeight = FontWeight.Bold,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.62f),
-                        letterSpacing = 1.2.sp
+                        text = stringResource(R.string.disclaimer),
+                        style = MaterialTheme.typography.bodyMedium,
+                        fontWeight = FontWeight.SemiBold,
+                        fontSize = 14.sp,
+                        lineHeight = 22.sp,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
-
-                    Text(
-                        text = "All proxies are created by third parties and we only collect them ✅",
-                        style = MaterialTheme.typography.bodySmall,
-                        fontWeight = FontWeight.Medium,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.85f)
-                    )
-
-                    Spacer(modifier = Modifier.height(4.dp))
-
-                    HorizontalDivider(
-                        color = if (isAppDarkTheme()) {
-                            MaterialTheme.colorScheme.outline.copy(alpha = 0.15f)
-                        } else {
-                            Color.White.copy(alpha = 0.5f)
-                        },
-                        thickness = 1.dp
-                    )
-
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(top = 4.dp),
-                        horizontalArrangement = Arrangement.SpaceBetween,
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Text(
-                            text = "Please follow us on Telegram 🙏",
-                            style = MaterialTheme.typography.bodySmall,
-                            fontWeight = FontWeight.Medium,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.85f),
-                            modifier = Modifier.weight(1f)
-                        )
-
-                        Button(
-                            onClick = { TelegramLauncher.launchChannel(context) },
-                            colors = ButtonDefaults.buttonColors(
-                                containerColor = MaterialTheme.colorScheme.primary
-                            ),
-                            shape = RoundedCornerShape(12.dp),
-                            contentPadding = PaddingValues(horizontal = 12.dp, vertical = 4.dp),
-                            modifier = Modifier.height(30.dp)
-                        ) {
-                            Text(
-                                text = "@I_w_a_n_a",
-                                color = Color.White,
-                                fontWeight = FontWeight.Bold,
-                                style = MaterialTheme.typography.labelSmall
-                            )
-                        }
-                    }
                 }
             }
 
-            // 3. Tab selectors: All vs Favorites
-            TabRow(
-                selectedTabIndex = activeTab,
-                containerColor = Color.Transparent,
-                contentColor = MaterialTheme.colorScheme.primary,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 16.dp, vertical = 4.dp)
-            ) {
-                Tab(
-                    selected = activeTab == 0,
-                    onClick = { activeTab = 0 },
-                    text = {
-                        Text(
-                            text = "${stringResource(R.string.all_proxies)} (${displayProxies.size})",
-                            fontWeight = if (activeTab == 0) FontWeight.Bold else FontWeight.Normal
-                        )
-                    }
-                )
-                Tab(
-                    selected = activeTab == 1,
-                    onClick = { activeTab = 1 },
-                    text = {
-                        Text(
-                            text = "${stringResource(R.string.favorites)} (${displayProxies.filter { it.isFavorite }.size})",
-                            fontWeight = if (activeTab == 1) FontWeight.Bold else FontWeight.Normal
-                        )
-                    }
-                )
-            }
 
+
+            // 3. Tab selectors: All vs Favorites
             Spacer(modifier = Modifier.height(6.dp))
 
             // 4. Stateful Response Container
-            PullToRefreshBox(
-                isRefreshing = isRefreshing,
-                onRefresh = { viewModel.refresh() },
-                state = pullToRefreshState,
-                modifier = Modifier.fillMaxSize()
-            ) {
+            Box(modifier = Modifier.fillMaxSize()) {
                 when (val state = uiState) {
                     is UiState.Loading -> {
                         Box(
@@ -381,13 +314,13 @@ fun ProxyScreen(
                                     textAlign = TextAlign.Center
                                 )
                                 Button(onClick = { viewModel.fetchAndScanProxies() }) {
-                                    Text("Retry")
+                                    Text(stringResource(R.string.retry))
                                 }
                             }
                         }
                     }
                     is UiState.Success -> {
-                        if (tabFilteredProxies.isEmpty()) {
+                        if (displayProxies.isEmpty()) {
                             Box(
                                 modifier = Modifier.fillMaxSize(),
                                 contentAlignment = Alignment.Center
@@ -412,18 +345,18 @@ fun ProxyScreen(
                             }
                         } else {
                             LazyColumn(
+                                state = listState,
                                 modifier = Modifier.fillMaxSize(),
                                 contentPadding = PaddingValues(bottom = 24.dp)
                             ) {
                                 items(
-                                    items = tabFilteredProxies,
+                                    items = displayProxies,
                                     key = { it.link }
                                 ) { proxy ->
                                     ProxyCard(
                                         proxy = proxy,
-                                        onFavoriteToggle = { item ->
-                                            viewModel.toggleFavorite(item)
-                                        }
+                                        isSaved = savedLinks.contains(proxy.link),
+                                        onToggleSave = { viewModel.toggleSave(proxy.link) }
                                     )
                                 }
                             }
