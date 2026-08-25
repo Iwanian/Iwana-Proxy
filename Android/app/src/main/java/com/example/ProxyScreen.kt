@@ -112,7 +112,7 @@ fun ProxyScreen(
                                 color = Color(0xFF4CAF50)
                             ) {}
                             Text(
-                                text = "SYSTEM READY (${displayProxies.count { it.isAlive }})",
+                                text = stringResource(R.string.system_ready_with_count, displayProxies.count { it.isAlive }),
                                 style = MaterialTheme.typography.labelSmall,
                                 fontWeight = FontWeight.Bold,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.62f),

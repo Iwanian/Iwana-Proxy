@@ -84,15 +84,15 @@ fun ProxyCard(
                 ) {
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.spacedBy(8.dp)
+                        horizontalArrangement = Arrangement.spacedBy(6.dp),
+                        modifier = Modifier.fillMaxWidth()
                     ) {
                         Text(
                             text = "Proxy ${proxy.id}",
                             fontSize = 17.sp,
                             fontWeight = FontWeight.Bold,
                             color = MaterialTheme.colorScheme.onSurface,
-                            maxLines = 1,
-                            overflow = TextOverflow.Ellipsis
+                            maxLines = 1
                         )
                         // Status tag
                         if (!proxy.isScanned) {
@@ -101,7 +101,7 @@ fun ProxyCard(
                                 shape = RoundedCornerShape(6.dp)
                             ) {
                                 Text(
-                                    text = "SCANNING",
+                                    text = stringResource(R.string.scanning_status),
                                     color = MaterialTheme.colorScheme.secondary,
                                     style = MaterialTheme.typography.labelSmall,
                                     fontWeight = FontWeight.Bold,
@@ -129,6 +129,38 @@ fun ProxyCard(
                                 Text(
                                     text = stringResource(R.string.offline_failed_status),
                                     color = MaterialTheme.colorScheme.error,
+                                    style = MaterialTheme.typography.labelSmall,
+                                    fontWeight = FontWeight.Bold,
+                                    modifier = Modifier.padding(horizontal = 6.dp, vertical = 2.dp)
+                                )
+                            }
+                        }
+
+                        // For Download Badge (like connected / disconnected)
+                        if (proxy.isForDownload) {
+                            Surface(
+                                color = Color(0xFFE8F0FE),
+                                shape = RoundedCornerShape(6.dp)
+                            ) {
+                                Text(
+                                    text = stringResource(R.string.for_download_badge),
+                                    color = Color(0xFF1967D2),
+                                    style = MaterialTheme.typography.labelSmall,
+                                    fontWeight = FontWeight.Bold,
+                                    modifier = Modifier.padding(horizontal = 6.dp, vertical = 2.dp)
+                                )
+                            }
+                        }
+
+                        // Russian Proxy Badge
+                        if (proxy.isRussian) {
+                            Surface(
+                                color = Color(0xFFFFF3E0),
+                                shape = RoundedCornerShape(6.dp)
+                            ) {
+                                Text(
+                                    text = stringResource(R.string.russian_badge),
+                                    color = Color(0xFFE65100),
                                     style = MaterialTheme.typography.labelSmall,
                                     fontWeight = FontWeight.Bold,
                                     modifier = Modifier.padding(horizontal = 6.dp, vertical = 2.dp)
@@ -163,7 +195,7 @@ fun ProxyCard(
                             fontSize = 20.sp
                         )
                         Text(
-                            text = "TESTING",
+                            text = stringResource(R.string.testing_status),
                             style = MaterialTheme.typography.labelSmall,
                             fontWeight = FontWeight.Bold,
                             color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.4f),
