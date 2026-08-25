@@ -19,8 +19,8 @@
     <string name="all_proxies">همه</string>
     <string name="search_placeholder">جستجوی سرور یا پورت...</string>
     <string name="auto_scan">اسکن خودکار (10ثانیه)</string>
-    <string name="system_ready">سیستم آماده</string>
-    <string name="system_ready_with_count">سیستم آماده (%1$d)</string>
+    <string name="system_ready">پروکسی‌های متصل</string>
+    <string name="system_ready_with_count">پروکسی‌های متصل (%1$d)</string>
     <string name="settings">تنظیمات</string>
     <string name="language">زبان</string>
     <string name="theme_setting">ظاهر</string>
@@ -68,4 +68,8 @@
     <string name="file_size_mb_hint">حجم فایل به مگابایت (مثلاً 74.6)</string>
     <string name="estimated_time_result">زمان تخمینی دانلود</string>
     <string name="offline_failed_status">قطع</string>
+    <string name="scanning_status">در حال اسکن</string>
+    <string name="testing_status">در حال بررسی</string>
+    <string name="for_download_badge">دانلودی</string>
+    <string name="russian_badge">روسی</string>
 </resources>
