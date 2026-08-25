@@ -19,8 +19,8 @@
     <string name="all_proxies">All</string>
     <string name="search_placeholder">Search server or port...</string>
     <string name="auto_scan">Auto Scan (15s)</string>
-    <string name="system_ready">SYSTEM READY</string>
-    <string name="system_ready_with_count">SYSTEM READY (%1$d)</string>
+    <string name="system_ready">CONNECTED PROXIES</string>
+    <string name="system_ready_with_count">CONNECTED PROXIES (%1$d)</string>
     <string name="settings">Settings</string>
     <string name="language">Language</string>
     <string name="theme_setting">Appearance</string>
@@ -68,4 +68,8 @@
     <string name="file_size_mb_hint">File size (e.g. 74.6 MB)</string>
     <string name="estimated_time_result">Estimated Time</string>
     <string name="offline_failed_status">OFFLINE</string>
+    <string name="scanning_status">SCANNING</string>
+    <string name="testing_status">TESTING</string>
+    <string name="for_download_badge">FOR DOWNLOAD</string>
+    <string name="russian_badge">RUSSIAN</string>
 </resources>
