@@ -9,5 +9,8 @@ data class ProxyItem(
     val ping: Long = -1,
     val isAlive: Boolean = false,
     val isFavorite: Boolean = false,
-    val isScanned: Boolean = false
+    val isScanned: Boolean = false,
+    val isForDownload: Boolean = false,
+    val isRussian: Boolean = false
 )
+
