@@ -19,8 +19,8 @@
     <string name="all_proxies">Все</string>
     <string name="search_placeholder">Поиск сервера или порта...</string>
     <string name="auto_scan">Автосканирование (10с)</string>
-    <string name="system_ready">СИСТЕМА ГОТОВА</string>
-    <string name="system_ready_with_count">СИСТЕМА ГОТОВА (%1$d)</string>
+    <string name="system_ready">ПОДКЛЮЧЕННЫЕ ПРОКСИ</string>
+    <string name="system_ready_with_count">ПОДКЛЮЧЕННЫЕ ПРОКСИ (%1$d)</string>
     <string name="settings">Настройки</string>
     <string name="language">Язык</string>
     <string name="theme_setting">Оформление</string>
@@ -68,4 +68,8 @@
     <string name="file_size_mb_hint">Размер файла в МБ (напр. 74.6)</string>
     <string name="estimated_time_result">Примерное время</string>
     <string name="offline_failed_status">ОФЛАЙН</string>
+    <string name="scanning_status">СКАНИРОВАНИЕ</string>
+    <string name="testing_status">ПРОВЕРКА</string>
+    <string name="for_download_badge">ДЛЯ СКАЧИВАНИЯ</string>
+    <string name="russian_badge">РОССИЯ</string>
 </resources>
