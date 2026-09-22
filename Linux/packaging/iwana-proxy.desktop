@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Iwana Proxy
+Name[fa]=ایوانا پروکسی
+Comment=Find, test, and connect to Telegram MTProto proxies
+Comment[fa]=یافتن، تست و اتصال به پروکسی‌های MTProto تلگرام
+Exec=iwana-proxy
+Icon=iwana-proxy
+Categories=Network;
+Terminal=false
+StartupWMClass=iwana-proxy
