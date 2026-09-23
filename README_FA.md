@@ -13,6 +13,7 @@
 [![Release](https://img.shields.io/github/v/release/Iwanian/Iwana-Proxy?style=for-the-badge)](https://github.com/Iwanian/Iwana-Proxy/releases/latest)
 [![License](https://img.shields.io/github/license/Iwanian/Iwana-Proxy?style=for-the-badge)](https://github.com/Iwanian/Iwana-Proxy/blob/main/LICENSE)
 [![Stars](https://img.shields.io/github/stars/Iwanian/Iwana-Proxy?style=for-the-badge)](https://github.com/Iwanian/Iwana-Proxy/stargazers)
+[![Downloads](https://img.shields.io/github/downloads/Iwanian/Iwana-Proxy/total?style=for-the-badge&label=Downloads)](https://github.com/Iwanian/Iwana-Proxy/releases)
 [![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS%20%7C%20Android-blue?style=for-the-badge)](#-دانلود)
 
 ویندوز • لینوکس • macOS • اندروید
@@ -25,6 +26,8 @@
 
 - 🚀 رابط کاربری مدرن و ساده
 - 🌍 جمع‌آوری و بررسی پروکسی‌ها
+- ⚡ دسته‌بندی پروکسی‌های پرسرعت
+- 🧪 تست و آنالیز پروکسی
 - 📡 تست تأخیر (Latency / Ping)
 - 📊 مرتب‌سازی هوشمند
 - 🌐 فیلتر بر اساس ریجن
@@ -57,35 +60,13 @@
 
 ---
 
-# 🚀 شروع سریع
-
-1. آخرین نسخه را از بخش Releases دانلود کنید.
-2. زبان موردنظر خود را انتخاب کنید.
-3. روی اسکن پروکسی‌ها بزنید.
-4. پروکسی موردنظر خود را انتخاب کنید.
-5. در تلگرام متصل شوید.
-
----
-
-# 🤝 کمک به Iwana
-
-اگر پروکسی سالم و باکیفیتی دارید، می‌توانید آن را از طریق ربات تلگرام برای ما ارسال کنید تا پس از بررسی، به سرور اضافه شود و همه کاربران از آن استفاده کنند.
-
-### 🤖 ربات ارسال پروکسی
-
-https://t.me/I_w_a_n_a_bot
-
-از همراهی شما ممنونیم ❤️
-
----
-
 # ❤️ حمایت مالی
 
 تمام امکانات Iwana Proxy رایگان بوده، رایگان هست و رایگان خواهد ماند.
 
 اگر از این پروژه لذت برده‌اید و دوست دارید از توسعه آن حمایت کنید، می‌توانید از طریق ارزهای دیجیتال زیر کمک مالی انجام دهید.
 
-کمک‌های شما صرف توسعه سرویس های دیگر و انتشار نسخه iPhone (iOS) خواهد شد.
+کمک‌های شما صرف توسعه سرویس های دیگر ما و انتشار نسخه iPhone (iOS) خواهد شد.
 
 ### USDT (Polygon)
 
@@ -99,31 +80,11 @@ TFaCWNT4N9wHJ2e1Z9MSuz1waUoMseRGqx
 
 ---
 
-# 🛣 نقشه راه
+# ⭐ ایوانا پروکسی را دوست داشتید؟
 
-- [x] Android
-- [x] Windows
-- [x] Linux
-- [x] macOS
-- [ ] iOS
+اگر این پروژه برایتان مفید بوده است، با دادن یک ⭐ به این ریپازیتوری از ما حمایت کنید
 
----
-
-# 🤝 مشارکت
-
-از مشارکت شما استقبال می‌کنیم.
-
-اگر باگی پیدا کردید، پیشنهادی دارید یا ایده‌ای برای بهتر شدن پروژه به ذهنتان رسید، از طریق تلگرام با ما در ارتباط باشید.
-
-👉 https://t.me/I_w_a_n_a?direct
-
----
-
-# ⭐ اگر Iwana را دوست داشتید
-
-اگر این پروژه برایتان مفید بوده است، با دادن یک ⭐ Star به این ریپازیتوری از ما حمایت کنید.
-
-ستاره دادن کاملاً رایگان است، اما به دیده شدن پروژه کمک بزرگی می‌کند و باعث می‌شود افراد بیشتری با Iwana Proxy آشنا شوند.
+ستاره دادن به دیده شدن پروژه کمک بزرگی می‌کند و باعث می‌شود افراد بیشتری با Iwana Proxy آشنا شوند.
 
 ---
 
